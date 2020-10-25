@@ -2,9 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-scroll';
+import Particles from 'react-particles-js';
 import PortfolioContext from '../../context/context';
-
-import ParticlesBg  from "particles-bg";
 
 const Header = () => {
   const { hero } = useContext(PortfolioContext);
@@ -25,25 +24,13 @@ const Header = () => {
 
   return (
     <section id="hero" className="jumbotron">
-      
-      
       <Container>
-        
         <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={500} distance="10px">
-         <ParticlesBg
-              type="cobweb"
-              bg={true}
-            color="#0077b6"
-            num={200}
-
-            /> <h1 className="hero-title">
-            
-            {title || ''}{' '}
-            <span className="text-color-main">{name || ''}</span>
+          <h1 className="hero-title">
+            {title || ''} <span className="text-color-main">{name || ''}</span>
             <br />
-            {subtitle || ""}
+            {subtitle || ''}
           </h1>
-          
         </Fade>
         <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
           <p className="hero-cta">
@@ -54,6 +41,26 @@ const Header = () => {
             </span>
           </p>
         </Fade>
+        <Particles
+          params={{
+            particles: {
+              number: {
+                value: 80,
+              },
+              size: {
+                value: 5,
+              },
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: 'repulse',
+                },
+              },
+            },
+          }}
+        />
       </Container>
     </section>
   );
